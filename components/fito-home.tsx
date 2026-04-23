@@ -152,17 +152,17 @@ export function FitoHome() {
 
       <section className="relative bg-white px-5 pb-10 pt-4 sm:px-8 sm:pb-14 sm:pt-16">
         <div className="fito-hero-stagger relative mx-auto max-w-5xl text-center">
-          <h1 className="font-sans mx-auto max-w-2xl text-balance text-fito-kicker font-medium text-ink">
+          {/* <h1 className="font-sans mx-auto max-w-2xl text-balance text-fito-kicker font-medium text-ink">
             Meditación y acompañamiento para encontrar paz interior
-          </h1>
-          <h2 className="font-julius mx-auto mt-8 max-w-3xl text-balance text-fito-display font-medium tracking-[0.08em] text-ink sm:mt-10">
+          </h1> */}
+          <h1 className="font-julius mx-auto mt-8 max-w-3xl text-balance text-fito-display font-medium tracking-[0.08em] text-ink sm:mt-10">
             <span className="uppercase">El arte de simplemente ser</span>
-          </h2>
-          <p className="font-sans mx-auto mt-8 max-w-5xl text-pretty text-fito-lead font-light text-ink">
+          </h1>
+          <h2 className="font-sans mx-auto mt-8 max-w-5xl text-pretty text-fito-lead font-light text-ink">
             Al dejar de intentar resolver lo que crees que está mal en ti y
             descansar en lo que realmente eres, la transformación ocurre
             naturalmente.
-          </p>
+          </h2>
           <div className="mt-12 flex justify-center">
             <CalBookingCta
               calLink={CAL_BOOKING_LINK}
