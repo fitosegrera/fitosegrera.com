@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Alegreya_Sans, Geist, Geist_Mono, Julius_Sans_One } from "next/font/google";
 
 import { CalEmbedInit } from "@/components/cal-embed-init";
+import { SiteJsonLd } from "@/components/site-json-ld";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,10 +28,28 @@ const alegreyaSans = Alegreya_Sans({
   variable: "--font-alegreya-stack",
 });
 
+const SITE_TITLE = "Coach espiritual y meditación | Fito Segrera";
+const SITE_DESCRIPTION =
+  "Sesiones de meditación y acompañamiento espiritual para reducir ansiedad, soltar el estrés y encontrar paz interior. Agenda tu sesión gratis.";
+
 export const metadata: Metadata = {
-  title: "Fito Segrera",
-  description:
-    "Facilito espacios para pausar, sentir y permitir que algo profundo en ti se transforme.",
+  metadataBase: new URL(getSiteUrl()),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    url: "/",
+    siteName: "Fito Segrera",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {
@@ -52,6 +72,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${juliusSansOne.variable} ${alegreyaSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SiteJsonLd />
         {calLink ? <CalEmbedInit calOrigin={calOrigin} /> : null}
         {children}
       </body>
