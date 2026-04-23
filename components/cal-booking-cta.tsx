@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 /** Same pill styles as the main landing CTA in `fito-home.tsx`. */
 const ctaClassName = cn(
   "inline-flex w-full max-w-[min(100%,24rem)] flex-wrap items-center justify-center gap-2.5 text-balance rounded-full bg-ink px-6 py-3.5 text-center sm:w-auto sm:max-w-none sm:gap-3 sm:px-12 sm:py-4",
-  "font-sans text-base font-light tracking-wide text-white sm:text-lg md:text-xl",
+  "font-sans text-fito-cta font-light tracking-wide text-white",
   "shadow-[0_0_0_1.5px_rgba(255,255,255,0.92),0_0_0_4px_rgba(255,255,255,0.1)]",
   "transition-[colors,transform,box-shadow] duration-200 ease-out",
   "hover:scale-[1.01] hover:bg-ink/90 hover:shadow-[0_0_0_1.5px_rgba(255,255,255,0.85),0_0_0_4px_rgba(255,255,255,0.12)]",
@@ -28,9 +28,18 @@ export type CalBookingCtaProps = {
   calLink: string;
   /** When set, forwarded as `data-cal-origin` for self-hosted Cal. */
   calOrigin?: string;
+  /** Button / link label. Defaults to “Agendar sesión gratis”. */
+  label?: string;
 };
 
-export function CalBookingCta({ className, calLink, calOrigin }: CalBookingCtaProps) {
+const DEFAULT_CTA_LABEL = "Agendar sesión gratis";
+
+export function CalBookingCta({
+  className,
+  calLink,
+  calOrigin,
+  label = DEFAULT_CTA_LABEL,
+}: CalBookingCtaProps) {
   const link = calLink.trim();
   if (!link) {
     return (
@@ -41,7 +50,7 @@ export function CalBookingCta({ className, calLink, calOrigin }: CalBookingCtaPr
           className="size-7 shrink-0 text-white sm:size-8"
           aria-hidden
         />
-        <span>Agendar sesión gratis</span>
+        <span>{label}</span>
       </a>
     );
   }
@@ -61,7 +70,7 @@ export function CalBookingCta({ className, calLink, calOrigin }: CalBookingCtaPr
         className="size-7 shrink-0 text-white sm:size-8"
         aria-hidden
       />
-      <span>Agendar sesión gratis</span>
+      <span>{label}</span>
     </button>
   );
 }
